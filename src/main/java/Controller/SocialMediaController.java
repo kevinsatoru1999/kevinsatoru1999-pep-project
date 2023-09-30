@@ -122,9 +122,9 @@ public class SocialMediaController {
     private void getMessageByIdHandler(Context context) throws JsonProcessingException{
         int messageId = Integer.parseInt(context.pathParam("message_id"));
         Message message = messageService.getMessageById(messageId);
-        // if (message.getMessage_text() == null) {
-            
-        // } 
+         if (message == null) {
+            context.status(200);
+         } else
         context.json(message).status(200);
     }
 
