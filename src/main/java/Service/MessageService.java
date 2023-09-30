@@ -37,6 +37,9 @@ public class MessageService {
 
     // Update Message
     public Message updateMessage(int messageId, Message message) {
+        if(message.getMessage_text().length() >= 255 || message.getMessage_text().equals("")) {
+            return null;
+        }
         //Message message = new Message(posted_by, message_text, time_posted_epoch);
         //return messageDao.updateMessage(messageId, message);
         Message existingMessage = messageDao.getMessageById(messageId);

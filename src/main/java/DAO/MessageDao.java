@@ -130,14 +130,14 @@ public class MessageDao {
         //Please refrain from using a 'try-with-resources' block when connecting to your database. 
         try{
             //Write SQL logic here
-            String sql = "UPDATE Message SET posted_by = ?, message_text = ?, time_posted_epoch = ? WHERE message_id = ?;";
+            String sql = "UPDATE Message SET message_text = ? WHERE message_id = ?;";
 
             //write PreparedStatement setString and setInt methods here.
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, messageText.getPosted_by());
-            statement.setString(2, messageText.getMessage_text());
-            statement.setLong(3, messageText.getTime_posted_epoch());
-            statement.setInt(4, messageId);
+            //statement.setInt(1, messageText.getPosted_by());
+            statement.setString(1, messageText.getMessage_text());
+            //statement.setLong(2, messageText.getTime_posted_epoch());
+            statement.setInt(2, messageId);
             statement.executeUpdate();
 
             //int rowsUpdated = statement.executeUpdate();
